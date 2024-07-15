@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FiPlus, FiTrash, FiEdit3 } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FaFire } from "react-icons/fa";
+import StaggeredDropDown from './StaggeredDropDown';
 
 
 export const KanbanBoard: React.FC = () => {
@@ -225,6 +226,9 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
     const handleDelete = (id: string) => {
         setCards((pv) => pv.filter((c) => c.id !== id));
     }
+    const handleEdit = () => {
+        
+    }
 
     interface labelColorInterface {
         Setup: string,
@@ -233,7 +237,6 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
     const labelColor:any = {
         Setup: 'bg-emerald-500/70',
         Design: 'bg-purple-500/70'
-
     }
     return (
         <>
@@ -244,11 +247,14 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
                 draggable="true"
                 onDragStart={(e: DragEvent) => handleDragStart(e, { title, id, column })}
                 className='cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing'>
-                <p className='text-sm text-neutral-100 text-left border-b border-neutral-700 pb-2'>{title}</p>
+                <div className='flex items-center justify-between'>
+                    <p className='text-sm text-neutral-100 text-left pb-2'>{title}</p>
+                    <StaggeredDropDown handleDelete={handleDelete} handleEdit={handleEdit} id={id}/>
+                </div>
                 <p className='text-xs text-neutral-100 text-left mt-2'>{description}</p>
                 <div className='flex items-center justify-end w-full gap-3 mt-4'>
                     <p className={`text-xs text-neutral-100 mr-auto px-2.5 py-1 rounded-md ${labelColor[label]}`}>{label}</p>
-                    <button
+                    {/* <button
                         className='mt-1.5 text-neutral-400 transition-colors hover:text-neutral-50 hover:scale-115'
                         onClick={() => handleDelete(id)}
                     >
@@ -259,7 +265,7 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
                         onClick={() => handleDelete(id)}
                     >
                         <FiTrash />
-                    </button>
+                    </button> */}
                 </div>
             </motion.div>
         </>
@@ -455,10 +461,10 @@ const DEFAULT_CARDS = [
         label: 'Setup',
         teamMembers: ['Alice', 'Bob'],
     },
-    { 
-        title: "Add logging to daily CRON", 
-        id: "9", 
-        column: "doing", 
+    {
+        title: "Add logging to daily CRON",
+        id: "9",
+        column: "doing",
         description: 'Initialize the Git repository and set up the basic project structure.',
         label: 'Setup',
         teamMembers: ['Alice', 'Bob'],
