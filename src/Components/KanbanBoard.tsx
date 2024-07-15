@@ -230,14 +230,11 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
         
     }
 
-    interface labelColorInterface {
-        Setup: string,
-        Design: string
+    const labelColor:Record<string, string> = {
+        'Setup': 'bg-emerald-500/70',
+        'Design': 'bg-purple-500/70'
     }
-    const labelColor:any = {
-        Setup: 'bg-emerald-500/70',
-        Design: 'bg-purple-500/70'
-    }
+
     return (
         <>
             <DropIndicator beforeId={id} column={column} />
