@@ -13,7 +13,7 @@ interface CardProps {
     handleDragStart: (e: DragEvent, card: any) => void
 }
 
-const Card = ({ title, id, column, description, label, teamMembers, handleDragStart }: CardProps) => {
+const Card = ({ title, id, column, description, label, teamMembers, handleDragStart}: CardProps) => {
 
     const handleEdit = () => {
 
@@ -21,7 +21,11 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
 
     const labelColor: Record<string, string> = {
         'Setup': 'bg-emerald-500/70',
-        'Design': 'bg-purple-500/70'
+        'Design': 'bg-purple-500/70',
+        'Development': 'bg-indigo-500/70',
+        'Testing': 'bg-amber-500/70',
+        'Deployment': 'bg-yellow-500/70',
+
     }
 
     return (

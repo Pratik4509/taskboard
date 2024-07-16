@@ -6,6 +6,8 @@ import AddCard from './AddCard';
 import { DropIndicator } from './KanbanBoard';
 import Card from './Card';
 import { RootState } from '../redux/store';
+import { getTasksByProjectId } from '../redux/selector';
+import { useParams } from 'react-router-dom';
 
 interface ColumnProps {
     title: string,
@@ -13,10 +15,19 @@ interface ColumnProps {
     column: string,
 }
 
-const Column = ({ title, headingColor, column}: ColumnProps) => {
+const Column = ({ title, headingColor, column }: ColumnProps) => {
 
     const [active, setActive] = useState(false)
-    const cards:CardType[] = useSelector((state:RootState) => state.kanban.cards)
+    const { projectId } = useParams<{ projectId: string }>();
+    // const cards:CardType[] = useSelector((state:RootState) => state.kanban.cards)
+    // const cards: CardType[] = useSelector((state: RootState) => getTasksByProjectId(state, projectId))
+    const cards:CardType[]  = useSelector((state: RootState) => getTasksByProjectId(state, projectId!));
+
+
+    // useEffect(()=>{
+    //     setTasks(cards.filter(c => c.projectId === projectId))
+    // },[cards])
+    
     const dispatch = useDispatch();
 
     const handleDragStart = (e: DragEvent, card: any) => {
@@ -132,7 +143,7 @@ const Column = ({ title, headingColor, column}: ColumnProps) => {
                     return <Card key={c.id} {...c} handleDragStart={handleDragStart} />
                 })}
                 <DropIndicator beforeId="-1" column={column} />
-                <AddCard column={column} />
+                <AddCard column={column} projectId={projectId}/>
             </div>
         </div>
     )

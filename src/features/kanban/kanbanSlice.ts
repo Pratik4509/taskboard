@@ -16,7 +16,7 @@ const KanbanSlice = createSlice({
         setCards: (state, actions) => {
             state.cards = actions.payload
         },
-        addCard: (state, action) => {
+        addCard: (state, action: PayloadAction<CardType>) => {
             state.cards = [...state.cards, action.payload]
         },
         handleDelete: (state, action) => {

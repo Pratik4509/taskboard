@@ -19,7 +19,7 @@ const routes = createBrowserRouter([
         element: <Main />
       },
       {
-        path: '/project/:id',
+        path: '/project/:projectId',
         element: <KanbanBoard />
       }
     ]

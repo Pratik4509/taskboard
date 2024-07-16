@@ -3,22 +3,25 @@ import React, { useState } from 'react'
 import { FiPlus } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../features/kanban/kanbanSlice';
+import { CardType } from '../types';
 
 interface AddCardProps {
     column: string,
+    projectId?: string,
 }
 
-const AddCard:React.FC<AddCardProps> = ({ column}) => {
+const AddCard:React.FC<AddCardProps> = ({ column, projectId}) => {
     const [text, setText] = useState('');
     const [adding, setAdding] = useState(false)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()    
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!text.trim().length) return;
 
-        const newCard = {
+        const newCard: CardType = {
+            projectId : projectId ? projectId : '',
             column,
             title: text.trim(),
             id: Math.random().toString(),
