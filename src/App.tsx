@@ -6,6 +6,8 @@ import Sidebar from './Components/Sidebar';
 import { createBrowserRouter, RouterProvider, RouteProps } from 'react-router-dom';
 import Home from './Components/Home';
 import Main from './Components/Main';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const routes = createBrowserRouter([
   {
@@ -13,8 +15,8 @@ const routes = createBrowserRouter([
     element: <Home />,
     children: [
       {
-        path:'/',
-        element: <Main/>
+        path: '/',
+        element: <Main />
       },
       {
         path: '/project/:id',
@@ -27,7 +29,9 @@ const routes = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={routes} />
+      <Provider store={store}>
+        <RouterProvider router={routes} />
+      </Provider>
     </div>
   );
 }

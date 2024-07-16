@@ -8,13 +8,14 @@ import {
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { IconType } from "react-icons";
+import { useDispatch } from "react-redux";
+import { handleDelete } from "../features/kanban/kanbanSlice";
 
 interface DDProps {
-    handleDelete: (id: string) => void
     handleEdit: () => void
     id: string
 }
-const StaggeredDropDown = ({ handleDelete, handleEdit, id }: DDProps) => {
+const StaggeredDropDown = ({handleEdit, id }: DDProps) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -42,9 +43,9 @@ const StaggeredDropDown = ({ handleDelete, handleEdit, id }: DDProps) => {
                 style={{ originY: "top", translateX: "-50%" }}
                 className="flex flex-col gap-2 p-2 rounded-lg bg-white shadow-xl absolute top-[120%] left-[50%] w-36 overflow-hidden"
             >
-                <Option setOpen={setOpen} Icon={FiEdit} text="Edit" action={handleEdit} id={id} />
+                <Option setOpen={setOpen} Icon={FiEdit} text="Edit" id={id} />
                 {/* <Option setOpen={setOpen} Icon={FiPlusSquare} text="Duplicate" /> */}
-                <Option setOpen={setOpen} Icon={FiTrash} text="Remove" action={handleDelete} id={id} className="text-red-600 hover:bg-red-100 hover:text-red-600"/>
+                <Option setOpen={setOpen} Icon={FiTrash} text="Remove" id={id} className="text-red-600 hover:bg-red-100 hover:text-red-600"/>
             </motion.ul>
         </motion.div>
         // </div>
@@ -55,20 +56,24 @@ const Option = ({
     text,
     Icon,
     setOpen,
-    action,
     id,
     className
 }: {
     text: string;
     Icon: IconType;
     setOpen: Dispatch<SetStateAction<boolean>>;
-    action: (id: string) => void;
     id: string;
     className?: string;
 }) => {
+    const dispatch = useDispatch()
     const handleClick = (id: string) => {
         setOpen(false);
-        action(id);
+        if (text === 'Remove') {
+            dispatch(handleDelete(id))
+        }
+        if (text === 'Edit') {
+            
+        }
     }
     return (
         <motion.li
