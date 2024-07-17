@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { CardType } from '../types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCards } from '../features/kanban/kanbanSlice';
-import AddCard from './AddCard';
+// import AddCard from './AddCard';
 import { DropIndicator } from './KanbanBoard';
 import Card from './Card';
 import { RootState } from '../redux/store';
 import { getTasksByProjectId } from '../redux/selector';
 import { useParams } from 'react-router-dom';
+import AddTasks from './AddTasks';
 
 interface ColumnProps {
     title: string,
@@ -143,7 +144,8 @@ const Column = ({ title, headingColor, column }: ColumnProps) => {
                     return <Card key={c.id} {...c} handleDragStart={handleDragStart} />
                 })}
                 <DropIndicator beforeId="-1" column={column} />
-                <AddCard column={column} projectId={projectId}/>
+                {/* <AddCard column={column} projectId={projectId}/> */}
+                <AddTasks column={column} projectId={projectId}/>
             </div>
         </div>
     )

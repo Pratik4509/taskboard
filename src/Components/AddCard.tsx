@@ -25,7 +25,7 @@ const AddCard:React.FC<AddCardProps> = ({ column, projectId}) => {
             column,
             title: text.trim(),
             id: Math.random().toString(),
-            label: 'Design',
+            label: ['Design'],
             description: "This is description",
             teamMembers: ['John']
         };

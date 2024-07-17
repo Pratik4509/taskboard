@@ -4,7 +4,7 @@ export interface CardType {
     id: string,
     column: string,
     description: string,
-    label: string,
+    label: Array<string>,
     teamMembers: string[]
 }
 

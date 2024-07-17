@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+// import React from 'react'
 import StaggeredDropDown from './StaggeredDropDown'
 import { DropIndicator } from './KanbanBoard'
 
@@ -7,14 +7,14 @@ interface CardProps {
     title: string,
     id: string,
     column: string,
-    label: string,
+    label: Array<string>,
     teamMembers: Array<string>
     description: string,
     handleDragStart: (e: DragEvent, card: any) => void
 }
 
 const Card = ({ title, id, column, description, label, teamMembers, handleDragStart}: CardProps) => {
-
+    
     const handleEdit = () => {
 
     }
@@ -42,8 +42,10 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
                     <StaggeredDropDown handleEdit={handleEdit} id={id} />
                 </div>
                 <p className='text-xs text-neutral-100 text-left mt-2'>{description}</p>
-                <div className='flex items-center justify-end w-full gap-3 mt-4'>
-                    <p className={`text-xs text-neutral-100 mr-auto px-2.5 py-1 rounded-md ${labelColor[label]}`}>{label}</p>
+                <div className='flex items-center justify-start w-full gap-3 mt-4'>
+                    {label.map(l=>(
+                        <p key={l} className={`text-xs text-neutral-100 px-2.5 py-1 rounded-md ${labelColor[l]}`}>{l}</p>
+                    ))}
                     {/* <button
                         className='mt-1.5 text-neutral-400 transition-colors hover:text-neutral-50 hover:scale-115'
                         onClick={() => handleDelete(id)}
