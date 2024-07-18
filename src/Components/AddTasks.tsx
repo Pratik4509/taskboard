@@ -62,7 +62,6 @@ const AddTasks: React.FC<AddCardProps> = ({ column, projectId }) => {
             e.target.classList.add("border-2")
             e.target.classList.add("ring-2")
             e.target.classList.add("border-red-700")
-
             setError(true)
         }
         else {
@@ -87,7 +86,8 @@ const AddTasks: React.FC<AddCardProps> = ({ column, projectId }) => {
             description: formData.description.trim(),
             teamMembers: ['John']
         };
-        if (!error && title.length > 0 && description.length > 0 && selectedLabel.length > 0) {
+
+        if (!error && formData.title.trim().length > 0 && formData.description.trim().length > 0 && selectedLabel.length > 0) {
             dispatch(addCard(newCard))
         }
     }
