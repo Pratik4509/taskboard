@@ -1,21 +1,18 @@
 import {
     FiEdit,
-    FiChevronDown,
     FiTrash,
-    FiShare,
-    FiPlusSquare,
 } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import { IconType } from "react-icons";
 import { useDispatch } from "react-redux";
-import { handleDelete } from "../features/kanban/kanbanSlice";
+import { handleDelete, setCurrentId, setIsOpen } from "../features/kanban/kanbanSlice";
 
 interface DDProps {
     handleEdit: () => void
     id: string
 }
-const StaggeredDropDown = ({handleEdit, id }: DDProps) => {
+const StaggeredDropDown = ({ handleEdit, id }: DDProps) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -45,7 +42,7 @@ const StaggeredDropDown = ({handleEdit, id }: DDProps) => {
             >
                 <Option setOpen={setOpen} Icon={FiEdit} text="Edit" id={id} />
                 {/* <Option setOpen={setOpen} Icon={FiPlusSquare} text="Duplicate" /> */}
-                <Option setOpen={setOpen} Icon={FiTrash} text="Remove" id={id} className="text-red-600 hover:bg-red-100 hover:text-red-600"/>
+                <Option setOpen={setOpen} Icon={FiTrash} text="Remove" id={id} className="text-red-600 hover:bg-red-100 hover:text-red-600" />
             </motion.ul>
         </motion.div>
         // </div>
@@ -72,20 +69,23 @@ const Option = ({
             dispatch(handleDelete(id))
         }
         if (text === 'Edit') {
-            
+            dispatch(setIsOpen(true))
+            dispatch(setCurrentId(id))
         }
     }
     return (
-        <motion.li
-            variants={itemVariants}
-            onClick={() => handleClick(id)}
-            className={`${className} flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer`}
-        >
-            <motion.span variants={actionIconVariants}>
-                <Icon />
-            </motion.span>
-            <span>{text}</span>
-        </motion.li>
+        <>
+            <motion.li
+                variants={itemVariants}
+                onClick={() => handleClick(id)}
+                className={`${className} flex items-center gap-2 w-full p-2 text-xs font-medium whitespace-nowrap rounded-md hover:bg-indigo-100 text-slate-700 hover:text-indigo-500 transition-colors cursor-pointer`}
+            >
+                <motion.span variants={actionIconVariants}>
+                    <Icon />
+                </motion.span>
+                <span>{text}</span>
+            </motion.li>
+        </>
     );
 };
 

@@ -5,7 +5,9 @@ import PROJECTS from "../../data/projects"
 
 const initialState: KanbanState = {
     cards: DEFAULT_CARDS,
-    projects: PROJECTS
+    projects: PROJECTS,
+    isOpen: false,
+    currentId: ''
 }
 
 
@@ -21,9 +23,21 @@ const KanbanSlice = createSlice({
         },
         handleDelete: (state, action) => {
             state.cards = state.cards.filter(c => c.id !== action.payload)
+        },
+        editTask: (state, action) => {
+            const index = state.cards.findIndex(task => task.id === action.payload.id)
+            if (index !== -1) {
+                state.cards[index] = action.payload
+            }
+        },
+        setIsOpen: (state, action) => {
+            state.isOpen = action.payload
+        },
+        setCurrentId: (state, action) => {
+            state.currentId = action.payload
         }
     }
 })
 
-export const { setCards, addCard, handleDelete } = KanbanSlice.actions;
+export const { setCards, addCard, handleDelete, editTask, setIsOpen, setCurrentId } = KanbanSlice.actions;
 export default KanbanSlice.reducer;

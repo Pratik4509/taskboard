@@ -9,6 +9,7 @@ import { RootState } from '../redux/store';
 import { getTasksByProjectId } from '../redux/selector';
 import { useParams } from 'react-router-dom';
 import AddTasks from './AddTasks';
+import ManageTask from './ManageTask';
 
 interface ColumnProps {
     title: string,
@@ -146,6 +147,7 @@ const Column = ({ title, headingColor, column }: ColumnProps) => {
                 <DropIndicator beforeId="-1" column={column} />
                 {/* <AddCard column={column} projectId={projectId}/> */}
                 <AddTasks column={column} projectId={projectId}/>
+                <ManageTask/>
             </div>
         </div>
     )

@@ -18,4 +18,6 @@ export interface ProjectsTypes {
 export interface KanbanState {
     cards: CardType[];
     projects: ProjectsTypes[];
+    isOpen: boolean;
+    currentId: string;
 }

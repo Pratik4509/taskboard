@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useLocation, useParams} from 'react-router-dom';
+import { NavLink, useLocation} from 'react-router-dom';
 import { RootState } from '../redux/store';
 
 
