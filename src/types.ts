@@ -11,7 +11,9 @@ export interface CardType {
 export interface ProjectsTypes {
     id: string,
     name: string,
-    descritpion: string,
+    description: string,
+    startDate: Date
+    endDate: Date
 } 
 
 
