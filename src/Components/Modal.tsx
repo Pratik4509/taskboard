@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { SetStateAction } from 'react'
 
-const Modal = ({ isOpen, setIsOpen, children }: { isOpen: boolean, setIsOpen: React.Dispatch<SetStateAction<boolean>>, children:JSX.Element }) => {
+const Modal = ({ isOpen, setIsOpen, children }: { isOpen: boolean, setIsOpen: React.Dispatch<SetStateAction<boolean>>| any, children:JSX.Element }) => {
     return (
         <AnimatePresence>
             {isOpen && (
