@@ -15,7 +15,7 @@ const Sidebar: React.FC = () => {
     const toggleTeam = () => setIsTeamOpen(!isTeamOpen);
     
     return (
-        <div className="w-72 h-screen bg-neutral-900 text-white flex flex-col border-r border-neutral-700 ">
+        <div className="w-72 h-screen bg-light-black text-white flex flex-col border-r border-neutral-800 ">
             <div className="p-4">
                 <div className="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

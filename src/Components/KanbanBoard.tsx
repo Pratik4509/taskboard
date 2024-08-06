@@ -5,7 +5,7 @@ import BurnBarrel from './BurnBarrel';
 
 export const KanbanBoard: React.FC = () => {
     return (
-        <div className='h-screen w-full bg-neutral-900 text-neutral-50'>
+        <div className='h-screen w-full bg-black text-neutral-50'>
             <Board />
         </div>
     )

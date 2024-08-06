@@ -145,7 +145,7 @@ const ManageTask = () => {
                         </div> */}
                     <input
                         type="text"
-                        className='mx-auto mt-2 w-full px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800'
+                        className='mx-auto mt-2 w-full px-3 py-1.5 rounded border border-neutral-800 bg-light-black'
                         placeholder="Enter title"
                         name="title"
                         value={formData.title.length > 0 ? formData.title : ''}
@@ -153,7 +153,7 @@ const ManageTask = () => {
                         onChange={handleInputChange}
                     />
                     <textarea
-                        className='mx-auto mt-4 w-full px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800'
+                        className='mx-auto mt-4 w-full px-3 py-1.5 rounded border border-neutral-800 bg-light-black'
                         placeholder="Enter Description"
                         name="description"
                         value={formData.description}
@@ -162,7 +162,7 @@ const ManageTask = () => {
                     />
                     <div className="mx-auto mt-4">
                         <div className="relative inline-block w-full">
-                            <div className="px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800">
+                            <div className="px-3 py-1.5 rounded border border-neutral-800 bg-light-black">
                                 <div className="p-2 flex gap-4 flex-wrap">
                                     {labelOptions.map(label => (
                                         <div
@@ -182,7 +182,7 @@ const ManageTask = () => {
                         <select
                             name="column"
                             id="column"
-                            className='w-full mt-4 px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800'
+                            className='w-full mt-4 px-3 py-1.5 rounded border border-neutral-800 bg-light-black'
                             value={formData.column}
                             onChange={handleSelectChange}
                         >

@@ -17,7 +17,7 @@ const Modal = ({ isOpen, setIsOpen, children }: { isOpen: boolean, setIsOpen: Re
                         animate={{ scale: 1, rotate: "0deg" }}
                         exit={{ scale: 0, rotate: "0deg" }}
                         onClick={(e) => e.stopPropagation()}
-                        className="bg-neutral-900 text-neutral-50 p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
+                        className="bg-black text-neutral-50 p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
                     >
                         {children}
                     </motion.div>

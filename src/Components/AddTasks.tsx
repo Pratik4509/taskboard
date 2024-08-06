@@ -117,14 +117,14 @@ const AddTasks: React.FC<AddCardProps> = ({ column, projectId }) => {
                         </div> */}
                         <input
                             type="text"
-                            className='mx-auto mt-2 w-full px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800'
+                            className='mx-auto mt-2 w-full px-3 py-1.5 rounded border border-neutral-800 bg-light-black'
                             placeholder="Enter title"
                             name="title"
                             // onChange={(e)=>setTitle(e.target.value)}
                             onChange={e => handleChange(e)}
                         />
                         <textarea
-                            className='mx-auto mt-4 w-full px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800'
+                            className='mx-auto mt-4 w-full px-3 py-1.5 rounded border border-neutral-800 bg-light-black'
                             placeholder="Enter Description"
                             name="description"
                             // onChange={(e)=>setDescription(e.target.value)}
@@ -132,7 +132,7 @@ const AddTasks: React.FC<AddCardProps> = ({ column, projectId }) => {
                         />
                         <div className="mx-auto mt-4">
                             <div className="relative inline-block w-full">
-                                <div className="px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800">
+                                <div className="px-3 py-1.5 rounded border border-neutral-800 bg-light-black">
                                     <div className="p-2 flex gap-4 flex-wrap">
                                         {labelOptions.map(label => (
                                             <div

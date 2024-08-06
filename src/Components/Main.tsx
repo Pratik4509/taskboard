@@ -3,12 +3,12 @@ import Table from './Table'
 
 const Main = () => {
     return (
-        <div className='w-full h-full bg-neutral-900 text-neutral-50 px-10'>
+        <div className='w-full h-full bg-black text-neutral-50 px-10'>
             <div className='w-full py-4 text-left '>
                 <div className='text-xl font-semibold mb-2'>Home</div>
                 <p className='text-sm text-neutral-200'>Monitor all your projects from here</p>
             </div>
-            <div className='mx-auto mt-4 mb-8 w-full px-3 py-1.5 rounded border border-neutral-700 bg-neutral-800 text-gray-300 flex justify-evenly items-center'>
+            <div className='mx-auto mt-4 mb-8 w-full px-3 py-1.5 rounded border border-neutral-800 bg-light-black text-gray-300 flex justify-evenly items-center'>
                 <div className='w-full text-left border-r-2 border-dashed border-gray-600'>
                     <div className='mb-2'>Total Projects</div>
                     <p className='text-amber-500'>4</p>

@@ -36,7 +36,7 @@ const Card = ({ title, id, column, description, label, teamMembers, handleDragSt
                 layoutId={id}
                 draggable="true"
                 onDragStart={(e: DragEvent) => handleDragStart(e, { title, id, column })}
-                className='cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing'>
+                className='cursor-grab rounded border border-neutral-800 bg-light-black p-3 active:cursor-grabbing'>
                 <div className='flex items-center justify-between'>
                     <p className='text-sm text-neutral-100 text-left pb-2'>{title}</p>
                     <StaggeredDropDown handleEdit={handleEdit} id={id} />
