@@ -16,7 +16,20 @@ const KanbanSlice = createSlice({
     initialState,
     reducers: {
         setCards: (state, actions) => {
-            state.cards = actions.payload
+            // state.cards = actions.payload
+            const cards  = actions.payload;
+            const existingCards = state.cards
+            const updatedCards = cards.reduce((acc:CardType[], newcard:any) =>{
+                const index = acc.findIndex(c => c.id === newcard.id);
+                if(index !== -1) {
+                    acc[index] = newcard;
+                }
+                else {
+                    acc.push(newcard);
+                }
+                return acc;
+            }, [...existingCards])
+            state.cards = updatedCards;
         },
         addCard: (state, action: PayloadAction<CardType>) => {
             state.cards = [...state.cards, action.payload]

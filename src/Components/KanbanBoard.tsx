@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import Column from './Column';
-import BurnBarrel from './BurnBarrel';
+// import BurnBarrel from './BurnBarrel';
 import { useParams } from 'react-router-dom';
-import { RootState } from '../redux/store';
-import { useSelector } from 'react-redux';
-import { CardType } from '../types';
-import { getTasksByProjectId } from '../redux/selector';
+import ProgressBar from './ProgressBar';
 
 
 export const KanbanBoard: React.FC = () => {
@@ -37,43 +34,15 @@ const Board = () => {
 
     // For local storage end
 
-    const { projectId } = useParams();
-    const data: CardType[] = useSelector((state: RootState) => getTasksByProjectId(state, projectId!));
-    const completed = data ? data.filter(d => d.column === "done") : [];
-    const barColor = () => {
-        let percent = completed.length / (data ? data.length : 1) * 100
-        if (percent <= 25 ) {
-            return 'bg-red-500';
-        }
-        if (percent <= 50) {
-            return 'bg-amber-500'
-        }
-        if (percent <= 75) {
-            return 'bg-lime-500'
-        }
-        if (percent = 100) {
-            return 'bg-green-500'
-        }
-    }
+    const { projectId = '0' } = useParams();
+
     return <>
         <div className="h-screen flex flex-col w-full">
             <div className="mr-auto w-full px-12 py-2 font-semibold text-3xl basis-1/4">
                 <div className='text-left'>
                     Mobile App
                 </div>
-                <div className='w-96 text-xs font-light text-left mt-4'>
-                    <div className='flex justify-between items-center'>
-                        <div>{completed.length!== data.length ? 'Ongoing' : 'Completed'}</div>
-                        <div>{`${(completed.length / (data ? data.length : 1)) * 100}%`}</div>
-                    </div>
-                    <div className="h-2 bg-gray-200 rounded-full mt-1">
-                        <div className={`h-full ${barColor()} rounded-full`} style={{ width: `${(completed.length / (data ? data.length : 1)) * 100}%` }}>
-                        </div>
-                    </div>
-                    <div className=''>
-                        {`${completed.length} tasks of ${data.length} tasks`}
-                    </div>
-                </div>
+                <ProgressBar projectId={projectId} className='mt-4'/>
             </div>
             <div className='flex w-full h-full gap-3 overflow-scroll px-12 pb-6 no-scrollbar'>
                 <Column
