@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiPlus } from 'react-icons/fi'
+import ProgressBar from './ProgressBar'
 
 
 const Table = () => {
@@ -18,15 +19,16 @@ const Table = () => {
             </div>
             <div className=' rounded-lg border border-neutral-800 bg-light-black text-gray-300'>
                 <table className='mx-auto w-full '>
-                    {/* <thead className=''>
+                    <thead className='border-b border-neutral-800'>
                         <tr >
-                            <th className='px-4 pt-2 pb-6 text-left '>Project Name</th>
-                            <th className='px-4 pt-2 pb-6 text-left '>Project Description</th>
-                            <th className='px-4 pt-2 pb-6 text-left '>Start Date</th>
-                            <th className='px-4 pt-2 pb-6 text-left '>End Date</th>
-                            <th className='px-4 pt-2 pb-6 text-left '>Actions</th>
+                            <th className='p-4 text-left font-semibold'>Project Name</th>
+                            <th className='p-4 text-left font-semibold'>Project Description</th>
+                            <th className='p-4 text-left font-semibold'>Progress</th>
+                            {/* <th className='px-4 pt-2 pb-6 text-left '>Start Date</th> */}
+                            <th className='p-4 text-left font-semibold'>End Date</th>
+                            <th className='p-4 text-left font-semibold'>Actions</th>
                         </tr>
-                    </thead> */}
+                    </thead>
                     <tbody>
                         {projects.map((project, index) => (
                             <tr key={project.id}
@@ -37,8 +39,11 @@ const Table = () => {
                                     </Link>
                                 </td>
                                 <td className="px-4 py-4 text-gray-400 text-left ">{project.description}</td>
-                                <td className="px-4 py-4 text-gray-400 text-left ">{project.startDate.toDateString()}</td>
-                                <td className="px-4 py-4 text-gray-400 text-left ">{project.endDate.toDateString()}</td>
+                                <td className="px-4 py-4 text-gray-400 text-left ">
+                                    <ProgressBar projectId={project.id}/>
+                                </td>
+                                {/* <td className="px-4 py-4 text-gray-400 text-left ">{project.startDate.toDateString()}</td> */}
+                                <td className="px-4 py-4 text-gray-400 text-left ">{new Date(project.endDate).toDateString()}</td>
                                 <td className="px-4 py-4 text-gray-400 text-left ">
                                     <div className='w-24 px-2 py-1.5 bg-emerald-700 text-neutral-50 rounded-md flex items-center justify-between cursor-pointer'>
                                         <span>Manage</span>
