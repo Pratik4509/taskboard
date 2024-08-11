@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Column from './Column';
 // import BurnBarrel from './BurnBarrel';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ProgressBar from './ProgressBar';
+import { RootState } from '../redux/store';
+import { useSelector } from 'react-redux';
+import { ProjectsTypes } from '../types';
 
 
 export const KanbanBoard: React.FC = () => {
@@ -35,14 +38,24 @@ const Board = () => {
     // For local storage end
 
     const { projectId = '0' } = useParams();
+    const project = useSelector((state: RootState) =>
+        state.kanban.projects.find((project: ProjectsTypes) => project.id === projectId)
+    );
 
     return <>
         <div className="h-screen flex flex-col w-full">
-            <div className="mr-auto w-full px-12 py-2 font-semibold text-3xl basis-1/4">
+            <div className="mr-auto w-full px-12 py-4 font-semibold text-3xl basis-1/4">
                 <div className='text-left'>
-                    Mobile App
+                    {project ? project.name : ''}
                 </div>
-                <ProgressBar projectId={projectId} className='mt-4'/>
+                <div className='flex justify-between items-center'>
+                    <ProgressBar projectId={projectId} className='mt-4' />
+                    <Link to={`/editProject/${projectId}`} className="hover:underline">
+                        <button className="px-3 py-1.5 bg-purple-700 rounded-md text-sm">
+                            Edit
+                        </button>
+                    </Link>
+                </div>
             </div>
             <div className='flex w-full h-full gap-3 overflow-scroll px-12 pb-6 no-scrollbar'>
                 <Column

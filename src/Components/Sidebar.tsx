@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink, useLocation} from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { RootState } from '../redux/store';
 
 
@@ -9,11 +9,11 @@ const Sidebar: React.FC = () => {
     const [isProjectsOpen, setIsProjectsOpen] = useState(location.pathname.startsWith('/project'));
     const [isTeamOpen, setIsTeamOpen] = useState(location.pathname.startsWith('/team'));
 
-    const projects = useSelector((state:RootState)=>state.kanban.projects)
+    const projects = useSelector((state: RootState) => state.kanban.projects)
 
     const toggleProjects = () => setIsProjectsOpen(!isProjectsOpen);
     const toggleTeam = () => setIsTeamOpen(!isTeamOpen);
-    
+
     return (
         <div className="w-72 h-screen bg-light-black text-white flex flex-col border-r border-neutral-800 ">
             <div className="p-4">
@@ -45,26 +45,31 @@ const Sidebar: React.FC = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-2.25-1.313M21 7.5v2.25m0-2.25-2.25 1.313M3 7.5l2.25-1.313M3 7.5l2.25 1.313M3 7.5v2.25m9 3 2.25-1.313M12 12.75l-2.25-1.313M12 12.75V15m0 6.75 2.25-1.313M12 21.75V19.5m0 2.25-2.25-1.313m0-16.875L12 2.25l2.25 1.313M21 14.25v2.25l-2.25 1.313m-13.5 0L3 16.5v-2.25" />
                             </svg>
-                            <span>Projects</span>
+                            <span className='flex justify-between w-full'>
+                                <p>Projects</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </span>
                         </div>
                     </button>
                     {isProjectsOpen && (
                         <div className="ml-4">
-                            {projects.map(project=>(
-                            <NavLink
-                            key={project.id}
-                                to={`/project/${project.id}`}
-                                className={({ isActive }) => `mt-2 block py-2 px-2 rounded text-neutral-400 hover:bg-gray-700 ${isActive ? 'bg-gray-700 text-neutral-50' : ''}`}
-                            >
-                                <div className='w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                                    </svg>
-                                    <span>{project.name}</span>
-                                </div>
-                            </NavLink>
+                            {projects.map(project => (
+                                <NavLink
+                                    key={project.id}
+                                    to={`/project/${project.id}`}
+                                    className={({ isActive }) => `mt-2 block py-2 px-2 rounded text-neutral-400 hover:bg-gray-700 ${isActive ? 'bg-gray-700 text-neutral-50' : ''}`}
+                                >
+                                    <div className='w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg'>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                                        </svg>
+                                        <span>{project.name}</span>
+                                    </div>
+                                </NavLink>
                             ))}
-                            
+
                             {/* Add more projects as needed */}
                         </div>
                     )}

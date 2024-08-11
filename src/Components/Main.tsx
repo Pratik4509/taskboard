@@ -3,7 +3,7 @@ import Table from './Table'
 
 const Main = () => {
     return (
-        <div className='w-full h-full bg-black text-neutral-50 px-10'>
+        <div className='w-full h-full bg-black text-neutral-50 px-10 overflow-scroll overflow-x-hidden'>
             <div className='w-full py-4 text-left '>
                 <div className='text-xl font-semibold mb-2'>Home</div>
                 <p className='text-sm text-neutral-200'>Monitor all your projects from here</p>

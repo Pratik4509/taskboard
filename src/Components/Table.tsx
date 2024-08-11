@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import { Link } from 'react-router-dom'
-import { FiArrowRight, FiPlus } from 'react-icons/fi'
+import { FiArrowRight, FiPlusCircle } from 'react-icons/fi'
 import ProgressBar from './ProgressBar'
 
 
@@ -12,10 +12,12 @@ const Table = () => {
         <div className='project-table mt-4 border-t border-neutral-800 '>
             <div className='flex justify-between items-center'>
                 <h2 className="text-xl font-semibold my-6 text-left">Projects</h2>
-                <div className='px-3 py-1.5 bg-purple-700 hover:scale-110 transition-all rounded-md flex items-center justify-between cursor-pointer gap-1'>
-                    <span>Add Task</span>
-                    <FiPlus />
-                </div>
+                <Link to='/addproject'>
+                    <div className='px-3 py-1.5 bg-purple-700 hover:scale-110 transition-all rounded-md flex items-center justify-between cursor-pointer gap-2'>
+                        <FiPlusCircle />
+                        <span>Add Project</span>
+                    </div>
+                </Link>
             </div>
             <div className=' rounded-lg border border-neutral-800 bg-light-black text-gray-300'>
                 <table className='mx-auto w-full '>
@@ -40,15 +42,17 @@ const Table = () => {
                                 </td>
                                 <td className="px-4 py-4 text-gray-400 text-left ">{project.description}</td>
                                 <td className="px-4 py-4 text-gray-400 text-left ">
-                                    <ProgressBar projectId={project.id}/>
+                                    <ProgressBar projectId={project.id} />
                                 </td>
                                 {/* <td className="px-4 py-4 text-gray-400 text-left ">{project.startDate.toDateString()}</td> */}
                                 <td className="px-4 py-4 text-gray-400 text-left ">{new Date(project.endDate).toDateString()}</td>
                                 <td className="px-4 py-4 text-gray-400 text-left ">
-                                    <div className='w-24 px-2 py-1.5 bg-emerald-700 text-neutral-50 rounded-md flex items-center justify-between cursor-pointer'>
-                                        <span>Manage</span>
-                                        <FiArrowRight />
-                                    </div>
+                                    <Link to={`/editproject/${project.id}`}>
+                                        <div className='w-24 px-2 py-1.5 bg-emerald-700 text-neutral-50 rounded-md flex items-center justify-between cursor-pointer'>
+                                            <span>Manage</span>
+                                            <FiArrowRight />
+                                        </div>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}

@@ -8,6 +8,7 @@ import Home from './Components/Home';
 import Main from './Components/Main';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import ManageProject from './Components/ManageProject';
 
 const routes = createBrowserRouter([
   {
@@ -21,7 +22,15 @@ const routes = createBrowserRouter([
       {
         path: '/project/:projectId',
         element: <KanbanBoard />
-      }
+      },
+      {
+        path: '/addproject',
+        element: <ManageProject/>
+      },
+      {
+        path: '/editproject/:projectId',
+        element: <ManageProject/>
+      },
     ]
   }
 ])

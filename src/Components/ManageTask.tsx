@@ -117,6 +117,7 @@ const ManageTask = () => {
             title: formData.title,
             description: formData.description,
             label: selectedLabel,
+            column: formData.column,
         };
         dispatch(editTask(updatedTask))
     }

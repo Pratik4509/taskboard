@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import DEFAULT_CARDS from "../../data/tasks"
-import { CardType, KanbanState } from "../../types"
+import { CardType, KanbanState, ProjectsTypes } from "../../types"
 import PROJECTS from "../../data/projects"
 
 const initialState: KanbanState = {
@@ -17,11 +17,11 @@ const KanbanSlice = createSlice({
     reducers: {
         setCards: (state, actions) => {
             // state.cards = actions.payload
-            const cards  = actions.payload;
+            const cards = actions.payload;
             const existingCards = state.cards
-            const updatedCards = cards.reduce((acc:CardType[], newcard:any) =>{
+            const updatedCards = cards.reduce((acc: CardType[], newcard: any) => {
                 const index = acc.findIndex(c => c.id === newcard.id);
-                if(index !== -1) {
+                if (index !== -1) {
                     acc[index] = newcard;
                 }
                 else {
@@ -48,9 +48,18 @@ const KanbanSlice = createSlice({
         },
         setCurrentId: (state, action) => {
             state.currentId = action.payload
-        }
+        },
+        addProject: (state, action: PayloadAction<ProjectsTypes>) => {
+            state.projects.push(action.payload);
+        },
+        updateProject: (state, action: PayloadAction<ProjectsTypes>) => {
+            const index = state.projects.findIndex((project) => project.id === action.payload.id);
+            if (index !== -1) {
+                state.projects[index] = action.payload;
+            }
+        },
     }
 })
 
-export const { setCards, addCard, handleDelete, editTask, setIsOpen, setCurrentId } = KanbanSlice.actions;
+export const { setCards, addCard, handleDelete, editTask, setIsOpen, setCurrentId, addProject, updateProject } = KanbanSlice.actions;
 export default KanbanSlice.reducer;
