@@ -9,6 +9,10 @@ import Main from './Components/Main';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import ManageProject from './Components/ManageProject';
+import ManageMembers from './Components/ManageMembers';
+import Table from './Components/Table';
+import Projects from './Components/Projects';
+import Teams from './Components/Teams';
 
 const routes = createBrowserRouter([
   {
@@ -18,6 +22,10 @@ const routes = createBrowserRouter([
       {
         path: '/',
         element: <Main />
+      },
+      {
+        path: '/project',
+        element: <Projects />
       },
       {
         path: '/project/:projectId',
@@ -31,6 +39,18 @@ const routes = createBrowserRouter([
         path: '/editproject/:projectId',
         element: <ManageProject/>
       },
+      {
+        path: '/team',
+        element: <Teams/>
+      },
+      {
+        path: '/team/add',
+        element: <ManageMembers/>
+      },
+      {
+        path: '/team/edit/:id',
+        element: <ManageMembers/>
+      }
     ]
   }
 ])

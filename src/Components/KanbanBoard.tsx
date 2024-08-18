@@ -6,6 +6,7 @@ import ProgressBar from './ProgressBar';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
 import { ProjectsTypes } from '../types';
+import { Breadcrumbs } from './Breadcrumbs';
 
 
 export const KanbanBoard: React.FC = () => {
@@ -44,8 +45,9 @@ const Board = () => {
 
     return <>
         <div className="h-screen flex flex-col w-full">
-            <div className="mr-auto w-full px-12 py-4 font-semibold text-3xl basis-1/4">
-                <div className='text-left'>
+            <div className="mr-auto w-full px-12 py-12 font-semibold text-3xl basis-1/4">
+                <Breadcrumbs current={project ? project.name : ''} />
+                <div className='text-left mt-4 pt-4 border-t border-neutral-800'>
                     {project ? project.name : ''}
                 </div>
                 <div className='flex justify-between items-center'>

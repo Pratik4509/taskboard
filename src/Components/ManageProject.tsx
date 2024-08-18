@@ -91,7 +91,7 @@ const ManageProject = () => {
             dispatch(addProject({ id: Date.now().toString(), ...formData }));
         }
 
-        navigate('/');
+        navigate('/project');
     };
 
     return (
@@ -156,7 +156,7 @@ const ManageProject = () => {
                 <div className="flex justify-end space-x-4 ">
                     <button
                         type="button"
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate('/project')}
                         className="px-4 py-2 bg-gray-600 rounded-md hover:bg-gray-500"
                     >
                         Cancel

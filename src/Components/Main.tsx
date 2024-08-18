@@ -46,7 +46,7 @@ const Main = () => {
                     </div>
                 </div>
             </div>
-            <Table />
+            {/* <Table /> */}
         </div>
     )
 }
