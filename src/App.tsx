@@ -13,6 +13,7 @@ import ManageMembers from './Components/ManageMembers';
 import Table from './Components/Table';
 import Projects from './Components/Projects';
 import Teams from './Components/Teams';
+import NotFound from './Components/NotFound';
 
 const routes = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const routes = createBrowserRouter([
         element: <ManageMembers/>
       }
     ]
+  },
+  {
+    path: '/*',
+    element: <NotFound/>
   }
 ])
 

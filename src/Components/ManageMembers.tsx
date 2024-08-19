@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../redux/store';
 import { TeamTypes } from '../types';
+import { motion } from 'framer-motion';
 
 const roles = ['Developer', 'Designer', 'Project Manager', 'Tester'];
 const statuses = ['Active', 'Inactive'];
@@ -64,6 +65,11 @@ const ManageMembers = () => {
         setSelectedSkills((prev) => prev.filter(l => l !== label))
     }
 
+    const updatedSkills = [
+        ...selectedSkills,
+        ...skills.filter(skill => !selectedSkills.includes(skill))
+    ]
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
@@ -83,6 +89,10 @@ const ManageMembers = () => {
             setSelectedSkills(existingMember.skills)
         }
     }, [existingMember])
+
+    // useEffect(()=>{
+    //     return ()=>setSelectedSkills([])
+    // },[])
 
     return (
         <div className='w-full h-full bg-black text-neutral-50 px-10 overflow-scroll overflow-x-hidden'>
@@ -145,15 +155,18 @@ const ManageMembers = () => {
                         <h2 className='text-xl font-semibold'>Skills</h2>
                         <p className='text-sm text-gray-400 mt-4'>Used to identify your skills on the Dashboard</p>
                         <div className="mt-4 px-3 py-1.5 rounded border border-neutral-800 bg-light-black">
-                            <div className="p-2 flex gap-4 flex-wrap">
-                                {skills.map(skill => (
-                                    <div
+                            <div
+                                className="p-2 flex gap-4 flex-wrap">
+                                {updatedSkills.map(skill => (
+                                    <motion.div
+                                        layout
+                                        // layoutId={skill}
                                         key={skill}
                                         className={`px-2 py-1 rounded-md cursor-pointer ${skillColor[skill]} ${selectedSkills.includes(skill) ? activeStyle : ''}`}
                                         onClick={() => handleClick(skill)}
                                     >
                                         {skill}
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>
