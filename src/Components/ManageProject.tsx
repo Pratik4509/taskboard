@@ -36,7 +36,6 @@ const ManageProject = () => {
                 endDate: existingProject.endDate,
             });
         }
-        console.log(existingProject)
     }, [existingProject]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -122,7 +121,6 @@ const ManageProject = () => {
                             className={`w-4/5 lg:w-96 mt-4 px-3 py-1.5 rounded border ${errors.name ? 'border border-red-900' : ' border-neutral-800'} bg-neutral-900`}
                         />
                         <p>{errors.description && <span className="text-red-500 text-sm">{errors.description}</span>}</p>
-
                     </div>
                 </div>
                 <div className='flex gap-8 flex-wrap lg:flex-nowrap'>
