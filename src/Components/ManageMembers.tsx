@@ -291,7 +291,7 @@ const ManageMembers = () => {
                 <div className="flex justify-end space-x-4">
                     <button
                         type="button"
-                        onClick={() => navigate('/project')}
+                        onClick={() => navigate('/team')}
                         className="px-4 py-2 bg-gray-600 rounded-md hover:bg-gray-500"
                     >
                         Cancel

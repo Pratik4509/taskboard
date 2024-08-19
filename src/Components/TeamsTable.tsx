@@ -37,8 +37,8 @@ const TeamsTable = () => {
                                 className={`border-b border-neutral-800 text-sm ${index === teams.length - 1 ? 'border-b-0' : ''}`}>
                                 <td className='pl-8 py-4'>
                                     <img
-                                        // src={team.profilePicture}
-                                        src='https://avataaars.io/?topType=ShortHairFrizzle&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Wink&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Brown'
+                                        src={team.profilePicture}
+                                        // src='https://avataaars.io/?topType=ShortHairFrizzle&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=Black&eyeType=Wink&eyebrowType=RaisedExcitedNatural&mouthType=Smile&skinColor=Brown'
                                         alt="Profile Picture"
                                         className="h-10 w-10 rounded-full object-cover object-center border border-gray-300"
                                     />

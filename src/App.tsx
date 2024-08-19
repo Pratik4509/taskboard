@@ -14,6 +14,7 @@ import Table from './Components/Table';
 import Projects from './Components/Projects';
 import Teams from './Components/Teams';
 import NotFound from './Components/NotFound';
+import { Analytics } from "@vercel/analytics/react"
 
 const routes = createBrowserRouter([
   {
