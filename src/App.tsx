@@ -67,6 +67,7 @@ function App() {
       <Provider store={store}>
         <RouterProvider router={routes} />
       </Provider>
+      <Analytics />
     </div>
   );
 }
