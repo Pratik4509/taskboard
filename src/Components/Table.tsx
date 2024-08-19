@@ -12,7 +12,7 @@ const Table = () => {
         <div className='project-table mt-4 border-t border-neutral-800 '>
             <div className='flex justify-between items-center'>
                 <h2 className="text-xl font-semibold my-6 text-left">Projects</h2>
-                <Link to='/addproject'>
+                <Link to='/project/add'>
                     <div className='px-3 py-1.5 bg-purple-700 hover:scale-110 transition-all rounded-md flex items-center justify-between cursor-pointer gap-2'>
                         <FiPlusCircle />
                         <span>Add Project</span>
@@ -23,7 +23,7 @@ const Table = () => {
                 <table className='mx-auto w-full '>
                     <thead className='border-b border-neutral-800'>
                         <tr >
-                            <th className='p-4 text-left font-semibold'>Project Name</th>
+                            <th className='py-4 pl-8 text-left font-semibold'>Project Name</th>
                             <th className='p-4 text-left font-semibold'>Project Description</th>
                             <th className='p-4 text-left font-semibold'>Progress</th>
                             {/* <th className='px-4 pt-2 pb-6 text-left '>Start Date</th> */}
@@ -35,7 +35,7 @@ const Table = () => {
                         {projects.map((project, index) => (
                             <tr key={project.id}
                                 className={`border-b border-neutral-800 text-sm ${index === projects.length - 1 ? 'border-b-0' : ''}`}>
-                                <td className="px-4 py-4 text-gray-200 text-left ">
+                                <td className="px-8 py-4 text-gray-200 text-left ">
                                     <Link to={`/project/${project.id}`} className="hover:underline">
                                         {project.name}
                                     </Link>
@@ -46,13 +46,20 @@ const Table = () => {
                                 </td>
                                 {/* <td className="px-4 py-4 text-gray-400 text-left ">{project.startDate.toDateString()}</td> */}
                                 <td className="px-4 py-4 text-gray-400 text-left ">{new Date(project.endDate).toDateString()}</td>
-                                <td className="px-4 py-4 text-gray-400 text-left ">
-                                    <Link to={`/editproject/${project.id}`}>
-                                        <div className='w-24 px-2 py-1.5 bg-emerald-700 text-neutral-50 rounded-md flex items-center justify-between cursor-pointer'>
-                                            <span>Manage</span>
+                                <td className="px-4 py-4 text-gray-400 text-left flex gap-2">
+                                    <Link to={`/project/${project.id}`}>
+                                        <div className='px-2 py-1.5 bg-blue-700 text-neutral-50 rounded-md flex items-center justify-between gap-2 cursor-pointer'>
+                                            <span>View</span>
                                             <FiArrowRight />
                                         </div>
                                     </Link>
+                                    <Link to={`/project/edit/${project.id}`}>
+                                        <div className='px-2 py-1.5 bg-emerald-700 text-neutral-50 rounded-md flex items-center justify-between gap-2 cursor-pointer'>
+                                            <span>Edit</span>
+                                            <FiArrowRight />
+                                        </div>
+                                    </Link>
+                                    
                                 </td>
                             </tr>
                         ))}

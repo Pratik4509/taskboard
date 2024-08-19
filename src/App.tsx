@@ -32,11 +32,11 @@ const routes = createBrowserRouter([
         element: <KanbanBoard />
       },
       {
-        path: '/addproject',
+        path: '/project/add',
         element: <ManageProject/>
       },
       {
-        path: '/editproject/:projectId',
+        path: '/project/edit/:projectId',
         element: <ManageProject/>
       },
       {

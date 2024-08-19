@@ -39,7 +39,7 @@ const Sidebar: React.FC = () => {
                         <span>Home</span>
                     </div>
                 </NavLink>
-                <div className='w-full mt-4'>
+                <div className='w-full'>
                     <NavLink to='/project'
                         className={({ isActive }) => `mt-2 block rounded text-neutral-400 hover:bg-gray-700 ${isActive ? 'bg-gray-700 text-white' : ''}`}
                     >
@@ -57,7 +57,7 @@ const Sidebar: React.FC = () => {
                     </NavLink>
                 </div>
 
-                <div className='w-full mt-4'>
+                <div className='w-full'>
                     <NavLink to='/team' className={({ isActive }) => `mt-2 block rounded text-neutral-400 hover:bg-gray-700 ${isActive ? 'bg-gray-700 text-white' : ''}`}
                     >
                         <button className="w-full text-left py-1.5 px-2 rounded hover:bg-gray-700 text-sm text-neutral-400">
@@ -73,7 +73,7 @@ const Sidebar: React.FC = () => {
 
                 <NavLink
                     to="/labels"
-                    className={({ isActive }) => `w-full block py-1.5 px-2 rounded text-neutral-400 hover:bg-gray-700 ${isActive ? 'bg-gray-700' : ''}`}
+                    className={({ isActive }) => `mt-2 w-full block py-1.5 px-2 rounded text-neutral-400 hover:bg-gray-700 ${isActive ? 'bg-gray-700' : ''}`}
                 >
                     <div className='w-full flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

@@ -52,7 +52,7 @@ const Board = () => {
                 </div>
                 <div className='flex justify-between items-center'>
                     <ProgressBar projectId={projectId} className='mt-4' />
-                    <Link to={`/editProject/${projectId}`} className="hover:underline">
+                    <Link to={`/project/edit/${projectId}`} className="hover:underline">
                         <button className="px-3 py-1.5 bg-purple-700 rounded-md text-sm">
                             Edit
                         </button>

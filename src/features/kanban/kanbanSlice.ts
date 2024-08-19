@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import DEFAULT_CARDS from "../../data/tasks"
 import { CardType, KanbanState, ProjectsTypes } from "../../types"
 import PROJECTS from "../../data/projects"
+import { TEAM_MEMBERS } from "../../data/teamMembers"
 
 const initialState: KanbanState = {
     cards: DEFAULT_CARDS,
     projects: PROJECTS,
+    teams: TEAM_MEMBERS,
     isOpen: false,
     currentId: ''
 }
