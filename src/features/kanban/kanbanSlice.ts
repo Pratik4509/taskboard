@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import DEFAULT_CARDS from "../../data/tasks"
-import { CardType, KanbanState, ProjectsTypes } from "../../types"
+import { CardType, KanbanState, ProjectsTypes, TeamTypes } from "../../types"
 import PROJECTS from "../../data/projects"
 import { TEAM_MEMBERS } from "../../data/teamMembers"
 
@@ -60,8 +60,17 @@ const KanbanSlice = createSlice({
                 state.projects[index] = action.payload;
             }
         },
+        addMember: (state, action: PayloadAction<TeamTypes>) => {
+            state.teams.push(action.payload)
+        },
+        updateMembers: (state,action: PayloadAction<TeamTypes>) => {
+            const index = state.teams.findIndex((team) => team.id === action.payload.id)
+            if(index !== -1) {
+                state.teams[index] = action.payload
+            }
+        }
     }
 })
 
-export const { setCards, addCard, handleDelete, editTask, setIsOpen, setCurrentId, addProject, updateProject } = KanbanSlice.actions;
+export const { setCards, addCard, handleDelete, editTask, setIsOpen, setCurrentId, addProject, updateProject, addMember, updateMembers } = KanbanSlice.actions;
 export default KanbanSlice.reducer;
